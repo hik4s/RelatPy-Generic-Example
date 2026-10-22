@@ -1,0 +1,75 @@
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m- [ ] [1;31m`[m.env[1;31m`[m não está rastreado.
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mPUBLICATION_CHECKLIST.md[m[36m:[mO [1;31m`[m.gitignore[1;31m`[m não remove arquivos que já estão no histórico. Para retirar arquivos privados do índice sem apagá-los localmente:
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mPUBLICATION_CHECKLIST.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mPUBLICATION_CHECKLIST.md[m[36m:[mSe dados sensíveis já foram enviados ao GitHub, apenas removê-los em um novo commit não elimina o histórico. Nesse caso, revogue segredos expostos e reescreva o histórico com [1;31m`[mgit filter-repo[1;31m`[m em uma cópia de segurança.
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mtext
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mtext
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME.md[m[36m:[m- [1;31m`[mPENDENTE[1;31m`[m
+[35mREADME.md[m[36m:[m- [1;31m`[mEXECUTANDO[1;31m`[m
+[35mREADME.md[m[36m:[m- [1;31m`[mCONCLUIDO[1;31m`[m
+[35mREADME.md[m[36m:[m- [1;31m`[mERRO[1;31m`[m
+[35mREADME.md[m[36m:[m- [1;31m`[mREMOVIDO[1;31m`[m
+[35mREADME.md[m[36m:[m- [1;31m`[mCANCELADO[1;31m`[m
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME.md[m[36m:[mO arquivo [1;31m`[m.env[1;31m`[m é local e nunca deve ser versionado.
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mREADME.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME.md[m[36m:[mConsulte também o arquivo [1;31m`[mPUBLICATION_CHECKLIST.md[1;31m`[m.
+[35mREADME_PORTFOLIO.md[m[36m:[m- Python assíncrono com [1;31m`[masyncio[1;31m`[m.
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mtext
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpython
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpython
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpython
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME_PORTFOLIO.md[m[36m:[m- [1;31m`[m.env[1;31m`[m excluído do versionamento.
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mREADME_PORTFOLIO.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+Binary file [35massets/logo.ico[m matches
+[35mtools/SANITIZADOR_README.md[m[36m:[mO script [1;31m`[msanitizar_publicacao.py[1;31m`[m foi criado para preparar uma cópia pública do RelatPy sem apagar conteúdo silenciosamente.
+[35mtools/SANITIZADOR_README.md[m[36m:[m- Termos próprios podem ser listados em [1;31m`[mpublication_terms.local.txt[1;31m`[m.
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mtext
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mtext
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mtools/SANITIZADOR_README.md[m[36m:[mEsse arquivo deve permanecer no [1;31m`[m.gitignore[1;31m`[m.
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[mpowershell
+[35mtools/SANITIZADOR_README.md[m[36m:[m[1;31m`[m[1;31m`[m[1;31m`[m
+[35mtools/sanitizar_publicacao.py[m[36m:[m            r"[^\s\"'<>[1;31m`[m]+",
+[35mtools/sanitizar_publicacao.py[m[36m:[m        re.compile(r"\\\\[A-Za-z0-9_.-]+\\[^\s\"'[1;31m`[m]+"),
