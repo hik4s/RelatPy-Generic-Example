@@ -1,0 +1,174 @@
+# =====================================================
+# RelatPy - política pública de dados e arquivos sensíveis
+# =====================================================
+
+# Credenciais, segredos e variáveis de ambiente
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.cer
+*.crt
+credentials*.json
+secrets*.json
+cookies*.json
+storage_state*.json
+auth_state/
+auth-state/
+
+# Configurações operacionais privadas
+config.py
+config.local.py
+config.local.json
+config.private.json
+reports.local.json
+reports.private.json
+paths.local.json
+network_paths.json
+publication_terms.local.txt
+sanitization_report_*.json
+
+# Módulos privados de relatório e receitas operacionais
+relatorios/
+reports/
+recipes/private/
+automations/private/
+
+# Dados e relatórios gerados
+*.csv
+*.xlsx
+*.xls
+*.ods
+*.parquet
+*.feather
+*.zip
+*.7z
+*.rar
+*.pdf
+
+# Exceções para amostras públicas sanitizadas
+!samples/*.csv
+!samples/*.json
+!docs/**/*.pdf
+
+# Bancos e persistência local
+*.db
+*.sqlite
+*.sqlite3
+*.duckdb
+
+# Ambientes virtuais
+venv/
+.venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# IDEs e editores
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos gerados pela automação
+downloads/
+exports/
+output/
+outputs/
+artifacts/
+logs/
+screenshots/
+evidence/
+temp/
+tmp/
+
+# Estado de execução
+status/
+*.pid
+*.lock
+*.tmp
+execucao.json
+status.json
+encerrar_streamlit.json
+
+# Playwright
+playwright-report/
+test-results/
+blob-report/
+trace.zip
+
+# Streamlit local
+.streamlit/secrets.toml
+
+# PyInstaller e distribuição
+build/
+dist/
+*.spec
+*.exe
+*.msi
+
+# Logs, traces e diagnóstico
+*.log
+*.trace
+*.har
+*.webm
+
+# Capturas potencialmente sensíveis
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.html
+
+# Exceções para ativos públicos controlados
+!assets/*.png
+!assets/*.jpg
+!assets/*.jpeg
+!assets/*.webp
+!docs/assets/*.png
+!docs/assets/*.jpg
+
+# Backups locais
+*.bak
+*.backup
+*.old
+*_original.py
+backup*/
+
+# Arquivos temporários do Office
+~$*
+
+# Marcadores e atalhos locais
+.atalho_criado
+*.lnk
+
+# Pacotes recebidos e correções temporárias
+correcao*/
+patch*/
+RelatPy_*corrigido*/
+RelatPy_*patch*/
