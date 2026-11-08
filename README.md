@@ -1,208 +1,90 @@
-# RelatPy
+# RelatPy — automação de relatórios web
 
-Plataforma local de automação de relatórios web desenvolvida em Python. O projeto utiliza Playwright para navegação automatizada e Streamlit para acompanhamento das execuções em uma interface local.
+**Estudo de automação em Python com interface local, worker independente e execução assíncrona.**
 
-> Esta é a versão pública e sanitizada do projeto. Fluxos específicos, seletores, endereços internos, nomes de sistemas, caminhos de rede, credenciais e arquivos gerados não fazem parte do repositório.
+O RelatPy organiza tarefas de geração de relatórios: seleção de período, execução dos fluxos, acompanhamento de status, downloads e tratamento de falhas. O projeto explora problemas comuns de automação operacional, como esperas de interface e separação entre a janela de acompanhamento e o processo executor.
 
-## Visão geral
+**Estado atual:** amostra pública sanitizada de arquitetura e implementação. Os módulos operacionais e a configuração privada foram retirados. Esta versão ainda precisa de um cenário fictício completo para ser executável de ponta a ponta por quem clonar o repositório.
 
-O RelatPy automatiza tarefas repetitivas relacionadas à geração de relatórios em aplicações web autorizadas. A pessoa usuária seleciona um período e os fluxos desejados, inicia a execução e acompanha o andamento pelo painel.
+## Stack
 
-O projeto foi criado para demonstrar uma solução completa de automação, incluindo preparação do ambiente, controle de processos, persistência de status, downloads, logs, cancelamento seguro e tratamento de falhas.
+Python, asyncio, Playwright, Streamlit, Tkinter, subprocess, JSON, pathlib e scripts de inicialização Windows. Há preparação para empacotamento e distribuição local.
 
-## Funcionalidades
+## Código disponível
 
-- Interface local com Streamlit.
-- Seleção de período inicial e final.
-- Seleção individual ou conjunta de automações.
-- Execução assíncrona com Playwright.
-- Acompanhamento do status de cada fluxo.
-- Download local dos arquivos gerados.
-- Envio opcional para destinos previamente autorizados.
-- Validação básica dos arquivos produzidos.
-- Cancelamento seguro da execução.
-- Limpeza controlada de arquivos temporários.
-- Logs separados para interface e worker.
-- Persistência local do estado da execução.
-- Preparação e reparo do ambiente Python.
-- Uso de navegador instalado no Windows.
+- Interface Streamlit para parametrizar período e acompanhar execuções.
+- Launcher e worker em processos separados.
+- Orquestração assíncrona com limite de concorrência.
+- Estados de execução e persistência de status em JSON.
+- Rotinas de download, arquivos, cancelamento e diagnóstico.
+- Ferramentas para revisar e sanitizar a publicação.
 
-## Arquitetura
+| Responsabilidade | Arquivo |
+| --- | --- |
+| Interface | [streamlit_app.py](ui/streamlit_app.py) |
+| Execução independente | [worker.py](worker.py) |
+| Concorrência e persistência de status | [executor.py](core/executor.py) |
+| Orquestração de downloads | [downloader.py](downloader.py) |
+| Controle da aplicação | [app_control.py](core/app_control.py) |
+| Revisão de publicação | [auditar_publicacao.py](tools/auditar_publicacao.py) |
 
-```text
-Launcher
-   ↓
-Preparação do ambiente
-   ↓
-Interface Streamlit
-   ↓
-Worker independente
-   ↓
-Orquestrador assíncrono
-   ↓
-Módulos privados de automação
-   ↓
-Downloads, validação e destino opcional
-```
+O executor usa arquivo temporário e substituição para atualizar o status, reduzindo o risco de leitores encontrarem um JSON parcialmente gravado. A execução em worker separado evita vincular todo o processamento à sessão visual do Streamlit.
 
-Estrutura pública recomendada:
+## Limites da amostra pública
 
-```text
-RelatPy/
-├── launcher.py
-├── worker.py
-├── main.py
-├── downloader.py
-├── auth.py
-├── requisitos.txt
-├── .env.example
-├── ui/
-│   └── streamlit_app.py
-├── core/
-│   ├── app_control.py
-│   └── executor.py
-├── assets/
-├── tools/
-│   └── auditar_publicacao.py
-├── README.md
-├── README_PORTFOLIO.md
-├── PUBLICATION_CHECKLIST.md
-└── .gitignore
-```
+| Item | Situação |
+| --- | --- |
+| Seletores, URLs e fluxos privados | Intencionalmente não distribuídos |
+| Configuração de relatórios | `downloader.py` depende de `config.RELATORIOS`, ausente na amostra |
+| Entrada de execução manual | Contém substituição sanitizada que precisa ser corrigida antes de funcionar |
+| Ambiente público de demonstração | Ainda não incluído |
+| Testes de comportamento e CI | Próximas melhorias |
 
-Os módulos específicos de relatório e as configurações operacionais permanecem fora do repositório público.
+O erro da entrada manual envolve atribuir uma string sanitizada a duas variáveis por desempacotamento. A solução deverá fornecer um contrato de credenciais e um fluxo fictício; recolocar dados privados não é necessário.
 
-## Estados de execução
-
-Cada automação pode assumir estados como:
-
-- `PENDENTE`
-- `EXECUTANDO`
-- `CONCLUIDO`
-- `ERRO`
-- `REMOVIDO`
-- `CANCELADO`
-
-## Tecnologias
-
-- Python 3.12
-- asyncio
-- Playwright
-- Streamlit
-- Tkinter
-- python-dotenv
-- PyInstaller
-- JSON
-- pathlib
-- subprocess
-- Git e GitHub
-- PowerShell
-
-## Requisitos para desenvolvimento
-
-- Windows 10 ou Windows 11.
-- Python 3.12 recomendado.
-- Navegador Chromium compatível instalado.
-- Acesso autorizado às aplicações que serão automatizadas.
+A limitação pertence à versão distribuída. Não há comprovação pública de métricas de economia de tempo ou taxa de sucesso, portanto esses resultados não são afirmados aqui.
 
 ## Preparação do ambiente
 
-```powershell
-py -3.12 -m venv .\venv
-.\venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-.\venv\Scripts\python.exe -m pip install --no-cache-dir -r .\requisitos.txt
-```
-
-Crie a configuração local a partir do exemplo:
+Requer Windows 10/11, Python 3.12 recomendado e navegador compatível. Na raiz, em PowerShell:
 
 ```powershell
-Copy-Item .\.env.example .\.env
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r Requisitos.txt
+.\.venv\Scripts\python.exe -m pip check
 ```
 
-O arquivo `.env` é local e nunca deve ser versionado.
+O nome versionado é `Requisitos.txt`, com R maiúsculo.
 
-## Execução em desenvolvimento
+A entrada de interface é `ui/streamlit_app.py`. O comando abaixo documenta o ponto de entrada, mas não supera a ausência da configuração e dos módulos privados:
 
 ```powershell
-.\venv\Scripts\python.exe -m streamlit run .\ui\streamlit_app.py
+.\.venv\Scripts\python.exe -m streamlit run ui/streamlit_app.py
 ```
 
-A interface é disponibilizada apenas no endereço local configurado pelo projeto.
+Para uma adaptação, implemente configuração e módulos próprios somente em páginas autorizadas. O próximo MVP público deve usar um site local fictício e gerar arquivos de exemplo sem exigir acesso corporativo.
 
-## Testes básicos
-
-Validar as dependências:
+## Validação disponível
 
 ```powershell
-.\venv\Scripts\python.exe -m pip check
+.\.venv\Scripts\python.exe tools/auditar_publicacao.py
 ```
 
-Validar a sintaxe dos arquivos Python públicos:
+A auditoria de publicação e a verificação de dependências não equivalem a testes funcionais de download, cancelamento ou recuperação.
 
-```powershell
-Get-ChildItem . -Recurse -Filter "*.py" |
-    Where-Object {
-        $_.FullName -notmatch "\SERVIDOR_EXEMPLO\CAMINHO_CENSURADO"
-    } |
-    ForEach-Object {
-        .\venv\Scripts\python.exe -m py_compile $_.FullName
-    }
-```
+Antes de publicar, revise também [o checklist](PUBLICATION_CHECKLIST.md). Não inclua credenciais, sessões, relatórios reais, endereços internos, logs operacionais ou capturas de aplicações privadas.
 
-Executar a auditoria de publicação:
+## Próximas entregas, em ordem
 
-```powershell
-.\venv\Scripts\python.exe .\tools\auditar_publicacao.py
-```
+1. Criar configuração e automação de demonstração com página local fictícia.
+2. Corrigir a entrada sanitizada e assegurar que um clone novo executa o exemplo.
+3. Testar sucesso, falha, timeout, cancelamento e associação de download.
+4. Adicionar CI com testes de comportamento e auditoria de publicação.
+5. Revisar arquivos acidentais na raiz e padronizar formatação e nomes.
+6. Registrar um vídeo curto e métricas do cenário fictício, com procedimento de medição.
 
-## Segurança e privacidade
+## Escopo do portfólio
 
-A versão pública não deve conter:
+Este projeto serve como evidência de Python assíncrono, automação web, processos e manipulação de arquivos. A proposta do MVP público é permitir avaliar essas competências sem depender de uma organização ou ambiente interno.
 
-- credenciais ou tokens;
-- cookies ou estados de sessão;
-- URLs internas;
-- nomes de servidores;
-- caminhos de compartilhamentos de rede;
-- nomes de sistemas corporativos;
-- nomes específicos de relatórios;
-- módulos privados de automação;
-- arquivos baixados;
-- logs e evidências;
-- screenshots de aplicações internas;
-- bancos de dados locais;
-- executáveis compilados com configurações internas;
-- dados operacionais reais.
-
-O projeto não desativa a validação TLS e não utiliza mecanismos para contornar controles de segurança.
-
-## Limites da versão pública
-
-A versão pública representa a arquitetura, a interface e os mecanismos genéricos de execução. Os fluxos concretos de navegação não são distribuídos porque podem conter seletores, regras de negócio e referências a ambientes privados.
-
-Para adaptar o projeto a outro ambiente, implemente módulos próprios somente para aplicações em que exista autorização formal.
-
-## Principais aprendizados
-
-- Esperar condições reais da interface é mais confiável do que usar pausas fixas.
-- Processos de automação devem permanecer separados da sessão visual.
-- Downloads precisam ser associados à execução correta.
-- Cancelamento deve abranger somente o worker atual e seus processos-filhos.
-- Segredos e configurações operacionais não devem fazer parte do código público.
-- Distribuição, observabilidade e recuperação de falhas são partes do produto.
-
-## Publicação
-
-Antes de enviar qualquer alteração:
-
-```powershell
-git status --short
-.\venv\Scripts\python.exe .\tools\auditar_publicacao.py
-git diff --cached
-```
-
-Consulte também o arquivo `PUBLICATION_CHECKLIST.md`.
-
-## Licença e uso
-
-Projeto demonstrativo de automação defensiva e autorizada. Cada pessoa ou organização é responsável por garantir autorização para automatizar aplicações e tratar os dados envolvidos.
+[Resumo técnico de portfólio](README_PORTFOLIO.md) · [Auditoria e sanitização](tools/SANITIZADOR_README.md)
