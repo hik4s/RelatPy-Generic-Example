@@ -4,7 +4,23 @@
 
 O RelatPy organiza tarefas de geração de relatórios: seleção de período, execução dos fluxos, acompanhamento de status, downloads e tratamento de falhas. O projeto explora problemas comuns de automação operacional, como esperas de interface e separação entre a janela de acompanhamento e o processo executor.
 
-**Estado atual:** amostra pública sanitizada de arquitetura e implementação. Os módulos operacionais e a configuração privada foram retirados. Esta versão ainda precisa de um cenário fictício completo para ser executável de ponta a ponta por quem clonar o repositório.
+**Estado atual:** amostra pública sanitizada com uma demonstração local executável de ponta a ponta. O demo usa um site fictício, três relatórios CSV e o executor assíncrono existente. Os módulos operacionais e a configuração privada não são distribuídos.
+
+## Experimente a demonstração
+
+Requer Python 3.12+. Na raiz, depois de preparar um ambiente virtual:
+
+```powershell
+python -m pip install -r requirements-demo.txt
+python -m playwright install chromium
+python -m demo.run --inicio 2026-11-01 --fim 2026-11-03
+```
+
+O comando inicia um site somente local, preenche o período em três abas e baixa os CSVs em paralelo. Arquivos, captura da página e status ficam em `demo-output/`. Use `--headed` para acompanhar o navegador. Todos os registros são fictícios; o demo não acessa sistemas da empresa.
+
+[Guia completo, arquitetura e validação](docs/DEMO.md) · [Workflow do demo](.github/workflows/demo.yml)
+
+![Demonstração local com dados fictícios](docs/assets/relatpy-demo.png)
 
 ## Stack
 
@@ -37,8 +53,8 @@ O executor usa arquivo temporário e substituição para atualizar o status, red
 | Seletores, URLs e fluxos privados | Intencionalmente não distribuídos |
 | Configuração de relatórios | `downloader.py` depende de `config.RELATORIOS`, ausente na amostra |
 | Entrada de execução manual | Contém substituição sanitizada que precisa ser corrigida antes de funcionar |
-| Ambiente público de demonstração | Ainda não incluído |
-| Testes de comportamento e CI | Próximas melhorias |
+| Demonstração independente | `python -m demo.run`, com site local e dados fictícios |
+| Testes de comportamento e CI | Datas, filtragem, HTTP e downloads em Chromium; workflow `Public demo` |
 
 O erro da entrada manual envolve atribuir uma string sanitizada a duas variáveis por desempacotamento. A solução deverá fornecer um contrato de credenciais e um fluxo fictício; recolocar dados privados não é necessário.
 
@@ -76,10 +92,10 @@ Antes de publicar, revise também [o checklist](PUBLICATION_CHECKLIST.md). Não 
 
 ## Próximas entregas, em ordem
 
-1. Criar configuração e automação de demonstração com página local fictícia.
-2. Corrigir a entrada sanitizada e assegurar que um clone novo executa o exemplo.
-3. Testar sucesso, falha, timeout, cancelamento e associação de download.
-4. Adicionar CI com testes de comportamento e auditoria de publicação.
+1. Ampliar o demo com testes de falha de download, timeout e cancelamento.
+2. Decidir a adaptação da entrada legada; o cenário executável atual usa `demo.run`.
+3. Registrar a execução remota do workflow e ampliar a auditoria de publicação.
+4. Evoluir a demonstração de acompanhamento na interface, sem módulos privados.
 5. Revisar arquivos acidentais na raiz e padronizar formatação e nomes.
 6. Registrar um vídeo curto e métricas do cenário fictício, com procedimento de medição.
 
