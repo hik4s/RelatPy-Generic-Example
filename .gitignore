@@ -108,6 +108,7 @@ temp/
 tmp/
 
 # Estado de execução
+demo-output/
 status/
 *.pid
 *.lock
